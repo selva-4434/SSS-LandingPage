@@ -3,11 +3,19 @@
 }
 
 .service-hero {
-  background: linear-gradient(135deg, var(--teal) 0%, var(--dark-teal) 100%);
+  background:
+    linear-gradient(135deg, rgba(0, 128, 128, 0.75), rgba(0, 90, 90, 0.75)),
+    url("hero.png"); /* your image */
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   color: var(--white);
   padding: 3rem 2rem;
   text-align: center;
 }
+
 
 .service-hero h1 {
   font-size: 2.5rem;

@@ -5,14 +5,14 @@ export default function Gallery() {
   const [selectedCategory, setSelectedCategory] = useState('all')
 
   const images = [
-    { id: 1, category: 'medical', title: 'Medical Centre', src: '/hospital-medical-centre.jpg' },
-    { id: 2, category: 'education', title: 'School Classes', src: '/school-classroom-students.jpg' },
-    { id: 3, category: 'community', title: 'Community Event', src: '/community-gathering-event.jpg' },
-    { id: 4, category: 'medical', title: 'Patient Care', src: '/patient-care-nurses.jpg' },
-    { id: 5, category: 'education', title: 'Student Activities', src: '/students-activity-learning.jpg' },
-    { id: 6, category: 'pharmacy', title: 'Pharmacy Services', src: '/pharmacy-medicines.jpg' },
-    { id: 7, category: 'community', title: 'Outreach Program', src: '/outreach-program-community.jpg' },
-    { id: 8, category: 'medical', title: 'Equipment', src: '/medical-equipment-diagnostics.jpg' }
+    { id: 1, category: 'medical', title: 'Medical Centre', src: '/hero.jpeg' },
+    { id: 2, category: 'education', title: 'School Classes', src: '/child.jpeg' },
+    { id: 3, category: 'community', title: 'Community Event', src: '/home.jpeg' },
+    { id: 4, category: 'medical', title: 'Patient Care', src: '/patient care.jpg' },
+    { id: 5, category: 'education', title: 'Student Activities', src: '/home2.jpeg' },
+    { id: 6, category: 'pharmacy', title: 'Pharmacy Services', src: '/Pharmacy.jpeg' },
+    { id: 7, category: 'community', title: 'Outreach Program', src: '/outreach.jpg' },
+    { id: 8, category: 'medical', title: 'Equipment', src: '/equip.jpg' }
   ]
 
   const categories = [

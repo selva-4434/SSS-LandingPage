@@ -1,95 +1,158 @@
+/* Hero.css — full working, responsive hero */
+:root{
+  --teal: #1fa1a0;
+  --dark-teal: #117a76;
+  --white: #ffffff;
+  --primary-orange: #ff8c00;
+  --light-gray: #f3f3f3;
+}
+
+/* Outer hero band (full width) */
 .hero {
-  background: 
-  url("/hero.png") left center no-repeat,
-  linear-gradient(135deg, var(--teal) 0%, var(--dark-teal) 100%);
-  background-size: auto 100%;
-  color: var(--white);
-  padding: 6rem 2rem;
-  text-align: right;     
-  min-height: 500px;
   display: flex;
-  align-items: center;
-  justify-content: flex-end; 
-  padding-right: 15rem;       
+  flex-direction: row;       /* two-column on desktop */
+  align-items: stretch;      /* equal column heights */
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding: 0;                /* no gaps above/below image */
+  box-sizing: border-box;
+  background: linear-gradient(135deg, var(--teal) 0%, var(--dark-teal) 100%);
+  /* You may set a min-height to enforce the hero height */
+  min-height: 420px;
 }
 
+/* LEFT: full-bleed image column (no gaps) */
+.hero-image {
+  flex: 1 1 55%;             /* roughly 55% width on desktop */
+  min-height: 420px;
+  background-image: url("/hero.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* Remove any implicit border/background from parent wrappers */
+  border: none;
+}
 
+/* RIGHT: content column (centered vertically) */
+.hero-content {
+  flex: 1 1 45%;
+  padding: 3rem 2.5rem;
+  color: var(--white);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* vertical centering */
+  box-sizing: border-box;
+  min-height: 420px;
+}
+
+/* Heading / typography */
 .hero-content h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  font-weight: bold;
+  font-size: clamp(1.8rem, 3.6vw, 3rem);
+  line-height: 1.02;
+  margin: 0 0 0.7rem 0;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
+/* primary/lead text */
+.hero-content .lead {
+  font-size: clamp(1rem, 2.1vw, 1.15rem);
+  margin: 0 0 1rem 0;
+  opacity: 0.95;
+}
+
+/* descriptive paragraph */
 .hero-content p {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  margin: 0 0 1.5rem 0;
   line-height: 1.6;
-  text-align: center;
+  max-width: 720px;
+  color: rgba(255,255,255,0.95);
 }
 
+/* buttons row */
 .hero-buttons {
   display: flex;
   gap: 1rem;
-  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
-  text-align: center;
 }
 
+/* button base */
 .btn {
-  padding: 0.75rem 2rem;
-  border-radius: 0.5rem;
+  padding: 0.75rem 1.6rem;
+  border-radius: 8px;
   font-weight: 600;
   font-size: 1rem;
-  transition: all 0.3s ease;
   border: none;
   cursor: pointer;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 
+/* primary / secondary */
 .btn-primary {
   background-color: var(--primary-orange);
   color: var(--white);
+  box-shadow: 0 4px 12px rgba(255,140,0,0.18);
 }
-
-.btn-primary:hover {
-  background-color: #E67E00;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 140, 0, 0.3);
-}
+.btn-primary:hover { transform: translateY(-3px); transition: all 160ms ease; }
 
 .btn-secondary {
   background-color: var(--white);
-  color: var(--teal);
+  color: var(--dark-teal);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 }
+.btn-secondary:hover { transform: translateY(-3px); transition: all 160ms ease; }
 
-.btn-secondary:hover {
-  background-color: var(--light-gray);
-  transform: translateY(-2px);
-}
-
-@media (max-width: 768px) {
+/* ---- Responsive: stack on smaller screens ---- */
+/* break at 900px (tablet & mobile) */
+@media (max-width: 900px) {
   .hero {
-    padding: 4rem 1rem;
-    min-height: 350px;
-    
+    flex-direction: column;    /* stack: image above, text below */
+    min-height: auto;
   }
 
-  .hero-content h1 {
-    font-size: 2rem;
+  .hero-image {
+    flex: 0 0 auto;
+    width: 100%;
+    min-height: 280px;         /* visible image height on mobile */
+    max-height: 55vh;
   }
 
-  .hero-content p {
-    font-size: 1rem;
+  .hero-content {
+    flex: 0 0 auto;
+    width: 100%;
+    padding: 2.25rem 1.25rem 3rem;
+    text-align: center;        /* center text on narrow screens */
+    min-height: auto;
   }
 
   .hero-buttons {
-    flex-direction: column;
+    justify-content: center;
   }
+}
 
-  .btn {
-    width: 100%;
-  }
+/* very small phones: buttons full width and smaller fonts */
+@media (max-width: 420px) {
+  .hero-content h1 { font-size: 1.4rem; }
+  .hero-content p { font-size: 0.95rem; }
+
+  .hero-buttons { flex-direction: column; gap: 0.75rem; width: 100%; }
+  .btn { width: 100%; }
+}
+
+/* utility reset for common page elements that might add gaps */
+.hero, .hero * {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
